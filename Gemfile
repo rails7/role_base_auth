@@ -16,7 +16,8 @@ gem 'therubyracer', platforms: :ruby
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem 'twitter-bootstrap-rails', '~> 3.2.0' #, git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
-gem 'will_paginate', '~> 3.0.7'
+# gem 'will_paginate', '~> 3.0.7'
+gem 'will_paginate-bootstrap'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

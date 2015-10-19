@@ -1,0 +1,45 @@
+<%= form_for @quote, :html => { :class => "form-horizontal quote" } do |f| %>
+
+    <% if @quote.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@quote.errors.count, "error") %> prohibited this quote from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @quote.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :message, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :message, :class => 'form-control' %>
+    </div>
+    <%= error_span(@quote[:message]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :genre, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :genre, :class => 'form-control' %>
+    </div>
+    <%= error_span(@quote[:genre]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :user_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :user_id, :class => 'form-control' %>
+    </div>
+    <%= error_span(@quote[:user_id]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            quotes_path, :class => 'btn btn-default' %>
+
+<% end %>
