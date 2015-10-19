@@ -3,10 +3,13 @@ class QuotesController < ApplicationController
   load_and_authorize_resource
   before_action :set_quote, only: [:show, :edit, :update, :destroy]
 
+  def dashboard
+    @quotes = Quote.paginate(page: params[:page]).includes(:user)
+  end
   # GET /quotes
   # GET /quotes.json
   def index
-    @quotes = Quote.paginate(page: params[:page])
+    @quotes = current_user.quotes.paginate(page: params[:page]).includes(:user)
   end
 
   # GET /quotes/1

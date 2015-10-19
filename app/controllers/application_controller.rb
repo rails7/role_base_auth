@@ -6,4 +6,12 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
   
+  def after_sign_in_path_for(resource)
+	  if current_user.admin?
+	    dashboard_path
+	  else
+	    quotes_path
+	  end
+	end
+  
 end
