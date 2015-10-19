@@ -23,8 +23,8 @@ class UsersController < ApplicationController
   end
 
   def welcome
-    redirect_to quotes_path #if current_user.try('admin?')
-    # redirect_to my_profile_path
+    redirect_to dashboard_path and return if current_user.try('admin?')
+    redirect_to quotes_path
   end
 
   # POST /users

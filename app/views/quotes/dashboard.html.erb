@@ -1,17 +1,18 @@
 <%- model_class = Quote -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%=t '.title', :default => "Dashboard" %></h1>
 </div>
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_quote_path,
             :class => 'btn btn-primary' %>
-              
+
 <table class="table table-striped">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:message) %></th>
       <th><%= model_class.human_attribute_name(:genre) %></th>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -22,6 +23,7 @@
         <td><%= link_to quote.id, quote_path(quote) %></td>
         <td><%= quote.message %></td>
         <td><%= quote.genre %></td>
+        <td><%= quote.user.try('email') %></td>
         <td><%= quote.created_at.admin_format %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
